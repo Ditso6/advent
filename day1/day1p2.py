@@ -14,14 +14,10 @@ while i < len(numbers):
         while k < len(numbers):
             if numbers[i] + numbers[j] + numbers[k] == 2020:
                 print(numbers[i] * numbers[j] * numbers[k])
-                break
+                exit(0)
             else:
                 k += 1
         else:
             j += 1
-            continue
-        break
     else:
         i += 1
-        continue
-    break
