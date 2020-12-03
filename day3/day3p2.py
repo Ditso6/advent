@@ -8,7 +8,7 @@ def countTrees(slopeLocations, slopeX, slopeY):
     while posY < height - 1:
         posX = (posX + slopeX) % width
         posY += slopeY
-        symbol = slopeLocations [posY][posX]
+        symbol = slopeLocations[posY][posX]
         if symbol == "#":
             counter += 1
     return counter
@@ -16,7 +16,7 @@ def countTrees(slopeLocations, slopeX, slopeY):
 # read input
 file = open("map.txt", "r")
 
-locations= []
+locations = []
 for line in file.readlines():
     locationLine= []
     for symbol in line.rstrip():
@@ -29,6 +29,6 @@ slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
 counter = 1
 for slope in slopes:
-    counter = counter * countTrees(locations, slope[0], slope[1])
+    counter *= countTrees(locations, slope[0], slope[1])
 
 print counter
