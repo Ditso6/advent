@@ -1,25 +1,26 @@
-# read input
-file = open("boardingpasses.txt", "r")
-
-
-def calculate_binary(row, addLetter, limit):
+def calculate_binary(row):
     pos = 0
-    range = limit
+    binary_range = 2 ** (len(row)) - 2
+
     for place in row:
-        range = range / 2
-        if place == addLetter:
-            pos += range + 1
+        binary_range = binary_range / 2
+        if place:
+            pos += binary_range + 1
 
     return pos
 
 
-def calculate_seat_id(boardingPass):
-    row = boardingPass[0:7]
-    col = boardingPass[7:10]
-    return calculate_binary(row, "B", 126) * 8 + calculate_binary(col, "R", 6)
+def calculate_seat_id(boarding_pass):
+    row = map(lambda x: x == "B", boarding_pass[0:7])
+    col = map(lambda x: x == "R", boarding_pass[7:10])
+    return calculate_binary(row) * 8 + calculate_binary(col)
+
+
+# read input
+input_file = open("boardingpasses.txt", "r")
 
 passes = []
-for line in file.readlines():
+for line in input_file.readlines():
     passes.append(list(line.rstrip()))
 
 seat_ids = []
@@ -31,5 +32,4 @@ for seat_id in seat_ids_range:
     if seat_id not in seat_ids and seat_id - 1 in seat_ids and seat_id + 1 in seat_ids:
         print seat_id
         exit(0)
-
 
