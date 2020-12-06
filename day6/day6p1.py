@@ -1,18 +1,21 @@
 # read input
-file = open("answers.txt", "r")
+input_file = open("answers.txt", "r")
 
 answers = []
-answerLine = set()
-for line in file.readlines():
-    if len(line.lstrip()) > 0:
-        answerLine.update(set(line.rstrip()))
+answer_line = set()
+lines = input_file.read().splitlines()
+for idx, line in enumerate(lines, 1):
+    if not line.strip() or idx == len(lines):
+        answers.append(answer_line)
+    if line.strip():
+        answer_line.update(set(line.rstrip()))
     else:
-        answers.append(answerLine)
-        answerLine = set()
-answers.append(answerLine)
+        answer_line = set()
+
 
 counter = 0
 for answer in answers:
     counter += len(answer)
 
+# 6249
 print counter
