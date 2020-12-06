@@ -1,11 +1,11 @@
 def calculate_binary_position(row):
     pos = 0
-    binary_range = 2 ** (len(row)) - 2
+    binary_range = 2 ** (len(row))
 
     for place in row:
         binary_range = binary_range / 2
         if place:
-            pos += binary_range + 1
+            pos += binary_range
 
     return pos
 
