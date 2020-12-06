@@ -1,4 +1,4 @@
-def calculate_binary(row):
+def calculate_binary_position(row):
     pos = 0
     binary_range = 2 ** (len(row)) - 2
 
@@ -13,7 +13,7 @@ def calculate_binary(row):
 def calculate_seat_id(boarding_pass):
     row = map(lambda x: x == "B", boarding_pass[0:7])
     col = map(lambda x: x == "R", boarding_pass[7:10])
-    return calculate_binary(row) * 8 + calculate_binary(col)
+    return calculate_binary_position(row) * 8 + calculate_binary_position(col)
 
 
 # read input
