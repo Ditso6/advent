@@ -1,0 +1,20 @@
+# read input
+file = open("calories.txt", "r")
+
+i = 1
+maxCalories = 0
+calories = {}
+for line in file.readlines():
+    if line.strip():
+        calories[i] = calories.setdefault(i, 0) + int(line)
+    else:
+        i += 1
+
+sortedCalories = dict(sorted(calories.items(), key=lambda x: x[1], reverse=True))
+
+topValues = list(sortedCalories.values())[0:3]
+
+for x in topValues:
+    maxCalories += x
+
+print(maxCalories)
