@@ -12,9 +12,6 @@ for line in file.readlines():
 
 sortedCalories = dict(sorted(calories.items(), key=lambda x: x[1], reverse=True))
 
-topValues = list(sortedCalories.values())[0:3]
-
-for x in topValues:
-    maxCalories += x
+maxCalories = sum(list(sortedCalories.values())[0:3])
 
 print(maxCalories)
